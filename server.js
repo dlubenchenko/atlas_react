@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const mongoUri = process.env.MONGODB_URI;
+const mongoUri = import.meta.env.VITE_MONGO_DB;
 
 mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
