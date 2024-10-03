@@ -3,15 +3,13 @@ import mongoose from 'mongoose';
 import cors from 'cors'; // Імпортуємо cors
 
 const app = express();
-app.use(cors({
-    origin: 'http://localhost:5173' // Додайте URL вашого React додатку
-}));
+app.use(cors());
 app.use(express.json());
 
 // Підключення до MongoDB
 const mongoUri = process.env.MONGODB_URI;
 
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoUri, {})
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error(err));
     process.env.MONGODB_URI
