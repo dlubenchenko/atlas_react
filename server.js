@@ -1,9 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';
+import cors from 'cors'; // Імпортуємо cors
 
 const app = express();
-app.use(cors());
+app.use(cors()); // Додаємо CORS
 app.use(express.json());
 
 // Підключення до MongoDB
@@ -12,7 +12,7 @@ const mongoUri = process.env.MONGODB_URI;
 mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error(err));
-
+    process.env.MONGODB_URI
 // Схема та модель для контактів
 const contactSchema = new mongoose.Schema({
     name: String,

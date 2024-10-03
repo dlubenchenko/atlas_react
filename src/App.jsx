@@ -1,11 +1,11 @@
+import Contacts from './Contacts'
 
 function App() {
-
-  return (
-    <>
-      Hello
-    </>
-  )
+	return (
+		<>
+			<Contacts />
+		</>
+	)
 }
 
 export default App
