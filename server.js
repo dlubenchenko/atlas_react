@@ -3,7 +3,9 @@ import mongoose from 'mongoose';
 import cors from 'cors'; // Імпортуємо cors
 
 const app = express();
-app.use(cors()); // Додаємо CORS
+app.use(cors({
+    origin: 'http://localhost:5173' // Додайте URL вашого React додатку
+}));
 app.use(express.json());
 
 // Підключення до MongoDB
