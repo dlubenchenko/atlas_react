@@ -3,7 +3,15 @@ import mongoose from 'mongoose';
 import cors from 'cors'; // Імпортуємо cors
 
 const app = express();
-app.use(cors());
+
+// Налаштування CORS
+const corsOptions = {
+    origin: 'http://localhost:5173', // Дозволяємо запити тільки з цього домену
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Дозволяємо тільки ці методи
+    allowedHeaders: ['Content-Type'], // Дозволяємо заголовок Content-Type
+};
+
+app.use(cors(corsOptions)); // Використовуємо налаштування CORS
 app.use(express.json());
 
 // Підключення до MongoDB
@@ -12,7 +20,7 @@ const mongoUri = process.env.MONGODB_URI;
 mongoose.connect(mongoUri, {})
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error(err));
-    process.env.MONGODB_URI
+
 // Схема та модель для контактів
 const contactSchema = new mongoose.Schema({
     name: String,
